@@ -28,7 +28,7 @@ All nessasary hacking to talk with the Gen2 inverter has been performed by [Cele
 ## On board charger and DC to DC converter
 There seems to be two ways to control the OBC. Using pure CAN communication (not implemented publically), or hacking the boards ([Peter's hack](https://mynissanleaf.com/viewtopic.php?f=44&t=30915&start=80#p596439)) , supplying you own signal to change the current generated (Constat current charger ?)
 
-Initial attempts using CAN has been done by [TrueSoln](https://mynissanleaf.com/viewtopic.php?f=44&t=30915&start=40). Althouf this is using messages designed for the Gen 1 Leaf. Briefly:
+Initial attempts using CAN has been done by [TrueSoln](https://mynissanleaf.com/viewtopic.php?f=44&t=30915&start=40). Although this is using messages designed for the Gen 1 Leaf. Briefly:
 
 * Message 1D4:
   * interval: 10ms
