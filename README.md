@@ -12,7 +12,14 @@ All nessasary hacking to talk with the Gen2 inverter has been performed by [Cele
 ### Connections
 
 ### 10ms messages
-11A, 1D4
+* 11A:
+
+* 1D4:
+
+
+* (Damien also sends 1DB, originate from BMS):
+  * Data: '00 00 00 00 00 00 XX 00'
+  * XX: counter ['0 1 2 3']
 
 ### 100ms messeges
 50B
