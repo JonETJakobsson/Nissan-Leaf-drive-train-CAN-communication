@@ -51,20 +51,25 @@ Initial attempts using CAN has been done by [TrueSoln](https://mynissanleaf.com/
 
 It is interesting that the 50B messages has different length. maybe TrueSoln works on the gen 1 charger? 50B might set the "Mode" of the car, only allowing  one mode, such as driving, standby or charging. I personally would love to be able to charge at the same time as I drive, as putting a generator on the tail whould allow the car to be driven to car shows etc. with out adding a huge battery pack, any ways...
 
-It is important to be able to control the current of the charger in order to charge ant battery pack. This data byte is not identified yet.
+It is important to be able to control the current of the charger in order to charge any battery pack. To find the message/messages containig this data is critical.
 
 There are several CAN messages sent from the Litium battery controller (BMS).
 
-Message 5CO seems to deal with historical battery data and heating of the pack
-Message 5BC contains information about remaining capacity and information to the instrument cluster.
-Message 59E is related to chademo quick charge.
-Message 55B reports state of charge, sensor malfunction and some other flags.
-Message 1DC hold the charge power limit for the battery (might be used to control the charger?) and max available power (will the inverter listen to this to reduce its max power?). also the max power of the charger it self.
-Message 1DB reports battery current, voltage and usable SOC. it also have other control flags.
+Message **5CO** seems to deal with historical battery data and heating of the pack.
+
+Message **5BC** contains information about remaining capacity and information to the instrument cluster.
+
+Message **59E** is related to chademo quick charge.
+
+Message **55B** reports state of charge, sensor malfunction and some other flags.
+
+Message **1DC** hold the charge power limit for the battery (might be used to control the charger?) and max available power (will the inverter listen to this to reduce its max power?). also the max power of the charger it self.
+
+Message **1DB** reports battery current, voltage and usable SOC. it also have other control flags.
 
 From this messages 1DC and 1DB might be nessesary to allow the OBC to start.
 
-1F2 comes from the VCM and also commands charge power. Will this bounce at the BMS first and then be requested from the BMS?
+1F2 comes from the VCM and also commands charge power. Will this bounce at the BMS first and then be requested from the BMS? Or does the VCM control the charger directly? 
 
 
 ## How to implement in the car
