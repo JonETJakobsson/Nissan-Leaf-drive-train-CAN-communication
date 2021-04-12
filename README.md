@@ -25,14 +25,17 @@ Initial attempts using CAN has been done by [TrueSoln](https://mynissanleaf.com/
 
 * Message 1D4:
   * interval: 10ms
-  * Data: 'F7 07 00 04 AA 46 E0 00'
+  * Data: 'F7 07 00 04 AA 46 E0 BB'
   * AA: Cycle ['87 c7 07 47']
+  * BB: CRC
+  * Note: This message is also used to send torque requests to the inverter. Same cycler is implemented when talking to the inverter but the static data bytes are different.
 
 * Message 1F2:
   * interval: 10ms
   * Data: '30 64 20 00 00 82 AA BB'
   * AA: cycler ['00 01 02 03']
   * BB: CRC? or cycler ['0B 0C 0D 0E']?
+  * Note: CAN database says that BB is a checksum adding all nibbles of the messages and adds 2 and keeping the four LSB. 
 
 * Message 50B
   * interval: 100ms
@@ -40,6 +43,8 @@ Initial attempts using CAN has been done by [TrueSoln](https://mynissanleaf.com/
   * Note: inverter likes this message with '00 00 **06** C0 00 00 00' (7 bytes)
 
 It is interesting that the 50B messages has different length. maybe TrueSoln works on the gen 1 charger? 50B might set the "Mode" of the car, only allowing  one mode, such as driving, standby or charging. I personally would love to be able to charge at the same time as I drive, as putting a generator on the tail whould allow the car to be driven to car shows etc. with out adding a huge battery pack, any ways...
+
+It is important to be able to control the current of the charger in order to charge ant battery pack. This data byte is not identified yet.
 
 ## How to implement in the car
 Preferable, one controller will provide the syncronization of starting the inverter and precharge. This contoller would also deliver the torque requests.
